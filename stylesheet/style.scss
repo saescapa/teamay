@@ -2,6 +2,42 @@
   box-sizing:border-box;
 }
 
+@keyframes circle1 {
+  0% {
+    transform: scale(1,1);
+  }
+  90% {
+    transform: scale(1.3,1.3);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes circle2 {
+  0% {
+    transform: scale(1,1);
+  }
+  90% {
+    transform: scale(1.4,1.4);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes circle3 {
+  0% {
+    transform: scale(1,1);
+  }
+  90% {
+    transform: scale(1.2,1.2);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -18,7 +54,7 @@ body {
 
 .header {
   color: #75bafe;
-  font-family: 'Playball', cursive;
+  font-family: 'Slabo 27px', serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -64,5 +100,43 @@ body {
   }
   &.ai {
     width: 25%;
+    background-color: #2e2e2e; //
+    color: #eeeeee;//
+    border: 1px solid black;
+    position: relative;
+    #logo {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto;
+      border: 3px solid #75bafe;
+      border-radius: 50%;
+      background-color: #27609A;
+      .word {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 40px;
+        color: #75bafe;
+      }
+      .circle {
+        width: 120px;
+        height: 120px;
+        margin-top: -79px;
+        margin-left: -8px;
+        position: absolute;
+        border-radius: 50%;
+        &.f {
+          border: 2px solid #d0ddea;
+          animation: circle1  12s infinite;
+        }
+        &.s {
+          border: 2px solid #3A5D81;
+          animation: circle2  9s infinite;
+        }
+        &.t {
+          border: 2px solid #648eb9;
+          animation: circle3  16s infinite;
+        }
+      }
+    }
   }
 }

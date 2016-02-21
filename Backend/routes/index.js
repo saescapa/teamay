@@ -48,35 +48,41 @@ exports.synonyms = function(req, res){
 };
 
 exports.antonyms = function(req, res){
-	var searchKeyword = req.query.searchKeyword;
+  var searchKeyword = req.query.searchKeyword;
 	var APIUrl = "http://www.dictionaryapi.com/api/v1/references/thesaurus/xml/"+searchKeyword+"?key=752471d4-26f9-48e0-8bbd-2a684acd9cb8";
 	request(APIUrl, function (error, response, body) {
-		console.log(response.statusCode);
-		  if (!error && response.statusCode == 200) {
+    parseString(body, function (err, result) {
+      console.log(body);
+		  if (!error && response.statusCode == 200 && result.entry_list.suggestion == null) {
 			  parseString(body, function (err, result) {
-			    res.send(result.entry_list.entry[0].sens[0].ant[0]._);
+			    res.send(result.entry_list.entry[0].sens[0].ant[0]);
 			  });
-		  }
+		  } else {
+        res.send("error");
+      }
+    });
 	});
 };
 
 exports.wsrch = function(req, res){
 	var searchQuery = req.query.searchQuery;
 	var APIUrl ="http://api.wolframalpha.com/v2/query?input="+searchQuery+"&appid=77TQ4T-K9GRAG46QU";
+  console.log(APIUrl);
 	request(APIUrl, function (error, response, body) {
 		console.log(response.statusCode);
 		  if (!error && response.statusCode == 200) {
 			  parseString(body, function (err, result) {
+          console.log(body);
 				  if(result.queryresult.$.success=="true"){
 					  var podArr = result.queryresult.pod;
 					  for(var i = 0; i<podArr.length; i++){
 						  var pod = podArr[i];
-						  console.log(pod.$);
-						  if(pod.$.title=='result'){
-							  console.log(pod.subpod);
+						  if(pod.$.title.toLowerCase()=='result'){
+							  res.send(pod.subpod[0].plaintext[0]);
+                console.log("SENT");
 						  }
 					  }
-				    res.send(result.queryresult);
+
 				  }
 			  });
 		  }

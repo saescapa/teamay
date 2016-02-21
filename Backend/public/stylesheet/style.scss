@@ -2,6 +2,42 @@
   box-sizing:border-box;
 }
 
+@keyframes circle1 {
+  0% {
+    transform: scale(1,1);
+  }
+  90% {
+    transform: scale(1.3,1.3);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes circle2 {
+  0% {
+    transform: scale(1,1);
+  }
+  90% {
+    transform: scale(1.4,1.4);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+@keyframes circle3 {
+  0% {
+    transform: scale(1,1);
+  }
+  90% {
+    transform: scale(1.2,1.2);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -18,7 +54,7 @@ body {
 
 .header {
   color: #75bafe;
-  font-family: 'Playball', cursive;
+  font-family: 'Slabo 27px', serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +69,6 @@ body {
   padding-top: 60px;
   &.editor {
     width: 75%;
-    border-right: 1px solid black;
     display: inline-flex;
     flex-flow: column;
     #textarea {
@@ -46,8 +81,8 @@ body {
       font-size: 1.1em;
       color: #dadada;
       padding: 10px;
-      border: 1px solid #75bafe;
-      border-top: 0px solid white;
+      border-right: 1px solid #75bafe;
+      //border-top: 0px solid white;
       border-radius: 1px;
       &:focus {
         border: none;
@@ -57,12 +92,74 @@ body {
       }
     }
     #toolbar {
-      border: 1px solid #75bafe;
-      border-bottom: 0px solid white;
+      border-right: 1px solid #75bafe;
+      //border-bottom: 0px solid white;
       border-radius: 1px;
     }
   }
   &.ai {
     width: 25%;
+    position: relative;
+    #logo {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto;
+      margin-bottom: 40px;
+      border: 3px solid #75bafe;
+      border-radius: 50%;
+      background-color: #27609A;
+      transition: all .5s;
+      color: #75bafe;
+      &:hover {
+        color: #0D1823;
+        background-color: #5091d3;
+      }
+      .word {
+        text-align: center;
+        margin-top: 23px;
+        font-size: 40px;
+      }
+      .circle {
+        width: 120px;
+        height: 120px;
+        margin-top: -86px;
+        margin-left: -8px;
+        position: absolute;
+        border-radius: 50%;
+        &.f {
+          border: 2px solid #d0ddea;
+          animation: circle1  12s infinite;
+        }
+        &.s {
+          border: 2px solid #3A5D81;
+          animation: circle2  9s infinite;
+        }
+        &.t {
+          border: 2px solid #648eb9;
+          animation: circle3  16s infinite;
+        }
+      }
+    }
+    .card {
+      margin: 10px;
+      border: 3px solid #fe7576;
+      border-radius: 2px;
+      color: black;
+      padding: 5px;
+      background-color: #eeeeee;
+      font-size :.9em;
+      ul {
+        span {
+          font-family: 'Cousine', sans-serif;
+          padding: 1px;
+          &.command {
+            background-color: #fefe75;
+          }
+          &.highlight {
+            background-color: #bafe75;
+          }
+        }
+      }
+    }
   }
 }

@@ -17,7 +17,7 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Playball|Slabo+27' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Playball|Slabo+27|Cousine' rel='stylesheet' type='text/css'>
 
     <!-- Latest compiled and minified CSS -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
@@ -172,16 +172,27 @@
 
       <!-- Create the editor container -->
       <div id="textarea">
-        <div>Hey there!</div>
-        <div>Welcome to PRODUCT NAME! Use this tool to easily access data using the following commands: </div>
-        - s.word :: Find synonym for word<br>
-        - a.word :: Find antonym for word
+
       </div>
     </div>
       <div class="main ai" id="main ai">
-        AI
-        <div id="syn-{{$index}}" class="syn" ng-repeat="synonym in synonyms | limitTo: 10" ng-click="replaceSynonyms(synonym.command,synonym.syn)">
-        		{{$index}}. {{synonym.syn}}
+        <div id="logo">
+          <div class="word">j</div>
+          <div class="circle f"></div>
+          <div class="circle s"></div>
+          <div class="circle t"></div>
+        </div>
+        <div id="data-{{$index}}" class="data" ng-repeat="dat in data | limitTo: 10" ng-click="replaceCommand(dat.command,dat.content,dat.type)">
+        		{{$index}}. {{dat.content}}
+        </div>
+        <div class="card">
+          Hello there! You can ask me any question any time you want! Just as you type, type in one of the following commands: <br>
+          <ul>
+            <li> <span class="command">```s.word```</span> | Will find you a list of synonyms of <span class="highlight">word</span> </li>
+            <li> <span class="command">```a.word```</span> | Will find you a list of antonyms of <span class="highlight">word</span> </li>
+            <li> <span class="command">```m.movie```</span> | Will find you a movie info of <span class="highlight">movie</span> </li>
+            <li> <span class="command">```g.question```</span> | Will find your answer to your <span class="highlight">question</span> </li>
+          </ul>
         </div>
       </div>
 
@@ -199,6 +210,7 @@
         },
         theme: 'snow'
       });
+      quill.focus();
     </script>
 
   </body>

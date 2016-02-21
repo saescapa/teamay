@@ -1,8 +1,3 @@
-function sendToServer(input) {
-  console.log(input);
-  //return "function ()" + input.substring(3,input.indexOf("```",input.indexOf("```")+ 1));
-}
-
 function getSection (str, delim) {
   var start = str.indexOf(delim);
   if (start === -1) return;
@@ -18,44 +13,39 @@ $(document).ready(function () {
     var command = getSection(quill.getHTML(), "```");
     if(command) {
       var select = quill.getSelection();
-      getSynonym(command.replaceAll('`',''), select);
-      $("#textarea").on("keydown", function (es) {
-          $("#syn-" + (es.keyCode - 48))[0].click();
-          return false;
-      });
-      //var html = quill.getHTML().replace(command,data);
-      //quill.setHTML(html);
-      //console.log(select.start - command.length + data.length - 1);
-      // quill.setSelection(select.start - command.length + data.length, select.end - command.length + data.length);
-      //quill.setHTML(html.replace(command, "test"));//
+      if(command.charAt(3) === 's') {
+        command = command.substring(5);
+        console.log("Synonym");
+        getSynonym(command.replaceAll('`',''), select);
+        $("#textarea").on("keydown", function (es) {
+            $("#data-" + (es.keyCode - 48))[0].click();
+            return false;
+        });
+      } else if(command.charAt(3) === 'a') {
+        command = command.substring(5);
+        console.log("Antonym");
+        getAntonym(command.replaceAll('`',''), select);
+        $("#textarea").on("keydown", function (es) {
+            $("#data-" + (es.keyCode - 48))[0].click();
+            return false;
+        });
+      } else if(command.charAt(3) === 'm') {
+        command = command.substring(5);
+        console.log("Movie");
+        getMovie(command.replaceAll('`',''), select);
+        $("#textarea").on("keydown", function (es) {
+            $("#data-" + (es.keyCode - 48))[0].click();
+            return false;
+        });
+      } else {
+        command = command.substring(5);
+        console.log("Search");
+        getWolfram(command.replaceAll('`',''), select);
+        $("#textarea").on("keydown", function (es) {
+            $("#data-" + (es.keyCode - 48))[0].click();
+            return false;
+        });
+      }
     }
   });
 });
-
-
-// $(document).ready(function () {
-//   $("textarea#txtarea").on("click txtarea keyup", function (e) {
-//     var command = getSection($("textarea#txtarea").val(), "```");
-//
-//     if(command) {
-//
-//       getSynonym(command.replaceAll('`',''));
-//       console.log("hi");
-//     }
-//
-//     var scope = angular.element(document.getElementById("main ai")).scope();
-//     var flag = scope.flag;
-//     if(flag && e.keyCode == 40){
-//     	console.log('flag set');
-//     	if(scope.synonyms && scope.synonyms.length>0){
-//
-//     	}
-//     }
-//
-//   });
-//
-//
-//
-//
-//
-// });
