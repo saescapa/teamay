@@ -22,16 +22,19 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
-
+app.engine('html', require('ejs').renderFile);
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
+app.get('/', function(req,res){    
+    res.render('index.html');
+});
 app.get('/gsearch', routes.gsearch);
 app.get('/users', user.list);
 app.get('/synonyms', routes.synonyms);
 app.get('/antonyms', routes.antonyms);
+app.get('/wsearch', routes.wsrch);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

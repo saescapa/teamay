@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    
+    <div class="row">
+    	
+    	<div class="col-md-8" style="border:1px solid black; min-height:700px;">
+    		<h3>Text Editor</h3>
+    		<textarea id="txtarea" rows="30" cols="90"></textarea>
+    		<script>
+    		var prevChar = 'start';
+			var commandString = '';
+			var commandInput = false;
+			var commandPos = -1;
+			$('#txtarea').keyup(function(){
+				var textEntered = document.getElementById('txtarea').value;
+				console.log(textEntered.length);
+				if( !commandInput && ((textEntered.length==5 && textEntered.substr(textEntered.length-5).toLowerCase().indexOf("@txed")>-1) || (textEntered.length>5 && textEntered.substr(textEntered.length-6).toLowerCase().indexOf(" @txed")>-1))){
+	    			commandInput = true;
+	    			commandPos = textEntered.length-5;
+    			}
+				else if(commandInput && textEntered.substr(commandPos, commandPos+5).toLowerCase().indexOf("@txed")>-1){
+					console.log('Hi');
+				}
+				else{
+					commandInput = false;
+					commandPos=-1;
+				}
+			
+			/*
+    		$('#txtarea').keypress(function(e){
+    			var textEntered = document.getElementById('txtarea').value;
+    			if( (textEntered.length==0 || textEntered.substr(textEntered.length-1)==' ') && String.fromCharCode(e.which) == "@"  ){
+	    			commandInput = true;
+	    			commandString = '@';
+    			}
+    			else if(commandInput){
+    				console.log(textEntered);
+    				if( textEntered.substr(textEntered.length-1)=='@' && String.fromCharCode(e.which).toLowerCase() == "t"){
+    						commandInput = true;
+    				}
+    				else if( textEntered.substr(textEntered.length-2)=='@t' && String.fromCharCode(e.which).toLowerCase() == "x"){
+    					commandInput = true;
+    				}
+    				else if( textEntered.substr(textEntered.length-3)=='@tx' && String.fromCharCode(e.which).toLowerCase() == "e"){
+    					commandInput = true;
+    				}
+    				else if( textEntered.substr(textEntered.length-4)=='@txe' && String.fromCharCode(e.which).toLowerCase() == "d"){
+    					commandInput = true;
+    					alert('success!');
+    				}
+    				else{
+    					console.log(e.which);
+    					commandString = '';
+    					commandInput = false;
+    				}
+    			}
+    			else{
+    			}
+    			*/
+    			/*
+    		    var searchTerm = $(this).val(); //user inputted
+    		    $(".sortable-items div").each(function(){ //loop through the list
+    		        if($(this).text().match(searchTerm)){ //check if list item contains the search term
+    		            $(this).show();
+    		        }else{
+    		            $(this).hide();
+    		        }
+    		    });
+    		    */
+    		});
+    		
+    		</script>
+    	</div>
+    	<div class="col-md-4" style="border:1px solid black; min-height:700px;"><h3>AI</h3></div>
+    
+    </div>
+    
+    </div>
+    
+  </body>
+</html>

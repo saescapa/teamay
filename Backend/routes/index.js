@@ -56,3 +56,26 @@ exports.antonyms = function(req, res){
 		  }
 	});
 };
+
+exports.wsrch = function(req, res){
+	var searchQuery = req.query.searchQuery;
+	var APIUrl ="http://api.wolframalpha.com/v2/query?input="+searchQuery+"&appid=77TQ4T-K9GRAG46QU";
+	request(APIUrl, function (error, response, body) {
+		console.log(response.statusCode);
+		  if (!error && response.statusCode == 200) {
+			  parseString(body, function (err, result) {
+				  if(result.queryresult.$.success=="true"){
+					  var podArr = result.queryresult.pod;
+					  for(var i = 0; i<podArr.length; i++){
+						  var pod = podArr[i];
+						  console.log(pod.$);
+						  if(pod.$.title=='result'){
+							  console.log(pod.subpod);
+						  }
+					  }
+				    res.send(result.queryresult);
+				  }
+			  });
+		  }
+	});
+};
