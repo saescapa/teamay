@@ -1,0 +1,28 @@
+* {
+  box-sizing:border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #565656;
+  color: white;
+}
+
+body {
+  display: table;
+}
+
+.main {
+  height: 100%;
+  border: 1px solid black;
+  display: inline-table;
+  &.editor {
+    width: 70%;
+  }
+  &.ai {
+    width: 30%;
+  }
+}
