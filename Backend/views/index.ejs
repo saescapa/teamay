@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=title%></title>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script>
+      function hndlr(response) {
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+        document.getElementById("content").innerHTML += "<br>" + "<a href='"+item.link+"'>"+item.htmlTitle+"</a>";
+      }
+    }
+    </script>
+    <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyD_8nfyh_FqLTFnAYZZL5AILxK3VsZLAoE&cx=017576662512468239146:omuauf_lfve&q=cars&callback=hndlr">
+    </script>
+  </body>
+</html>
