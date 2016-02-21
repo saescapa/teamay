@@ -2,7 +2,18 @@
 <html>
   <head>
     <title> Product Name </title>
+	<script type="text/javascript">
 
+		String.prototype.replaceAll = function(search, replacement) {
+		    var target = this;
+		    return target.replace(new RegExp(search, 'g'), replacement);
+		};
+		
+		setBG = function(eltId){
+			console.log(document.getElementById("syn-0"));
+		}
+
+	</script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
@@ -32,14 +43,14 @@
       <div class="styler">
         Style
       </div>
-      <textarea id="txtarea">
+      <textarea id="txtarea" rows="30" cols="30">
         Lorem <b>ipsum</b> dolor sit amet, consectetur adipiscing elit. Sed odio est, congue sed augue nec, consectetur gravida libero. In sit amet maximus dui. Etiam enim magna, bibendum nec nunc at, tincidunt tempor dolor. Morbi nec lorem a enim mollis maximus. Maecenas ullamcorper elit placerat, placerat augue vitae, aliquet velit. Donec egestas diam ac vulputate maximus. Cras et mauris sit amet massa fermentum suscipit. Sed porta mi felis, ac cursus tortor ornare laoreet. Duis nunc leo, ultricies consectetur egestas ac, rutrum eget est. Ut et sem pharetra, venenatis sem et, ultrices odio.
       </textarea>
     </div>
-    <div class="main ai">
+    <div class="main ai" id="main ai">
       AI
-      <div class="syn" ng-repeat="synonym in synonyms">
-      		
+      <div id="syn-{{$index}}" class="syn" ng-repeat="synonym in synonyms" ng-click="replaceSynonyms(synonym.command,synonym.syn)">
+      		{{synonym.syn}}
       </div>
     </div>
 

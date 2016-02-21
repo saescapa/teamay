@@ -1,10 +1,5 @@
-function sendToServer(input) {
-  console.log(input);
-  return "test";
-}
 
 function getSection (str, delim) {
-	console.log(str);
   var start = str.indexOf(delim);
   if (start === -1) return;
 
@@ -19,9 +14,24 @@ $(document).ready(function () {
     var command = getSection($("textarea#txtarea").val(), "```");
     
     if(command) {
-      $("textarea#txtarea").val($("textarea#txtarea").val().replace(command, sendToServer(command)));
+    
+      getSynonym(command.replaceAll('`',''));
       console.log("hi");
-      console.log($("textarea#txtarea"));
     }
+    
+    var scope = angular.element(document.getElementById("main ai")).scope();
+    var flag = scope.flag;
+    if(flag && e.keyCode == 40){
+    	console.log('flag set');
+    	if(scope.synonyms && scope.synonyms.length>0){
+    		
+    	}
+    }   
+    
   });
+  
+  
+  
+  
+  
 });

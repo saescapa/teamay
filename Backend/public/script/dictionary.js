@@ -1,9 +1,8 @@
 getSynonym = function(keyword){
-	alert(keyword);
 	$.get("/synonyms?searchKeyword="+keyword+"", function(data){
-		var scope = angular.element(document.getElementById("MainWrap")).scope();
+		var scope = angular.element(document.getElementById("main ai")).scope();
 			    scope.$apply(function () {
-			        scope.showSynonyms(data);
+			        scope.showSynonyms(keyword,data);
 			    });
 	});
 }
