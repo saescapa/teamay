@@ -12,7 +12,7 @@ http://devpost.com/software/juni
 
 ## Inspiration
 The internet can be very distracting. 
-When researching new information or referencing sources, opening new tabs and jumping between websites is a big time-waster and distracts us from ourmain focus.
+When researching new information or referencing sources, opening new tabs and jumping between websites is a big time-waster and distracts us from our main focus.
 
 ## What it does
 Juni is an AI-enhanced Text-Editor that allows us to perform our research in an easy and streamlined form without the need to jump around different websites.
