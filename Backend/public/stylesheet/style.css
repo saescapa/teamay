@@ -15,7 +15,7 @@ body {
 
 .header {
   color: #75bafe;
-  font-family: 'Playball', cursive;
+  font-family: 'Slabo 27px', serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,12 +42,19 @@ body {
       resize: none;
       font-size: 1.1em;
       color: #dadada;
-      padding: 10px; }
+      padding: 10px;
+      border: 1px solid #75bafe;
+      border-top: 0px solid white;
+      border-radius: 1px; }
       .main.editor #textarea:focus {
         border: none;
         overflow: auto;
         outline: none;
         box-shadow: none; }
+    .main.editor #toolbar {
+      border: 1px solid #75bafe;
+      border-bottom: 0px solid white;
+      border-radius: 1px; }
   .main.ai {
     width: 25%; }
 

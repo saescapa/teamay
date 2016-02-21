@@ -1,8 +1,68 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  box-sizing:border-box;
 }
 
-a {
-  color: #00B7FF;
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #2e2e2e;
+  color: #eeeeee;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  display: flex;
+}
+
+.header {
+  color: #75bafe;
+  font-family: 'Playball', cursive;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  font-size: 2.4em;
+}
+.main {
+  height: 100%;
+  display: inline-table;
+  padding-top: 60px;
+  &.editor {
+    width: 75%;
+    border-right: 1px solid black;
+    display: inline-flex;
+    flex-flow: column;
+    #textarea {
+      width: 100%;
+      max-height: 100%;
+      background-color: transparent;
+      border: 0px solid white;
+      flex: 1 1 auto;
+      resize: none;
+      font-size: 1.1em;
+      color: #dadada;
+      padding: 10px;
+      border: 1px solid #75bafe;
+      border-top: 0px solid white;
+      border-radius: 1px;
+      &:focus {
+        border: none;
+        overflow: auto;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+    #toolbar {
+      border: 1px solid #75bafe;
+      border-bottom: 0px solid white;
+      border-radius: 1px;
+    }
+  }
+  &.ai {
+    width: 25%;
+  }
 }
